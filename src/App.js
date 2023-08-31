@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import Login from "./pages/Login";
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Employee from "./pages/Employee";
+import DashBoard from "./pages/DashBoard";
+import Unauthorized from "./pages/Unauthorized";
+import AdminPage from "./pages/AdminPage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/page" element={<Home />}>
+            <Route index element={<DashBoard />} />
+            <Route path="/page/employee/:id" element={<Employee />} />
+            <Route path="/page/admin_page" element={<AdminPage />} />
+            <Route path="/page/unauthorized_page" element={<Unauthorized />} />
+          </Route>
+        </Routes>
+      </>
+    </>
   );
 }
 
